@@ -104,7 +104,7 @@
 	}
 
 	async function setContent(event: EventElements<HTMLTextAreaElement>) {
-		const content = event.currentTarget.value;
+		const content = event.target.value;
 		note.content = content;
 
 		await fetch(`/api/notes/${note.id}`, {

@@ -14,5 +14,5 @@ export type TNote = InferType<typeof Note>;
 
 
 export type EventElements<T extends HTMLElement = HTMLElement> = Event & {
-	currentTarget: EventTarget & T
+	target: EventTarget & T
 }
