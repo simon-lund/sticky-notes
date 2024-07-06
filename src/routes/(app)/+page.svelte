@@ -1,13 +1,24 @@
 <script lang="ts">
 	import '@xyflow/svelte/dist/style.css';
 	import { writable } from 'svelte/store';
-	import { SvelteFlow, Background, BackgroundVariant, Controls, MiniMap, type Node, Panel } from '@xyflow/svelte';
+	import {
+		SvelteFlow,
+		Background,
+		BackgroundVariant,
+		Controls,
+		MiniMap,
+		type Node,
+		Panel,
+		useSvelteFlow
+	} from '@xyflow/svelte';
 	import { transformToNodes } from '$lib/utils';
 	import Note from '$lib/components/note.svelte';
 	import debounce from 'lodash/debounce';
 	import { signOut } from '@auth/sveltekit/client';
 	import { LogOutIcon, PlusIcon } from 'lucide-svelte';
 	import { COLORS } from '$lib/constants';
+
+	const { screenToFlowPosition } = useSvelteFlow();
 
 	// Props
 	export let data;
@@ -36,10 +47,12 @@
 	}
 
 	async function addNote() {
+		const {x,y} = screenToFlowPosition({x: innerWidth / 2, y: innerHeight / 2 - 100});
+
 		const data = {
 			content: '',
-			x: Math.random() * (innerWidth / 2),
-			y: Math.random() * (innerHeight / 2),
+			x,
+			y,
 			color: COLORS[Math.floor(Math.random() * COLORS.length)],
 			isMinimized: false
 		};
