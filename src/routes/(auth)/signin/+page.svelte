@@ -1,5 +1,14 @@
 <script>
 	import { signIn } from '@auth/sveltekit/client';
+	import { page } from '$app/stores';
+	import { toast } from 'svelte-sonner';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		if($page.url.searchParams.get('error') === 'OAuthAccountNotLinked') {
+			toast.error('Please use the provider originally used to sign up', {position: 'top-center'});
+		}
+	});
 </script>
 
 <style>
