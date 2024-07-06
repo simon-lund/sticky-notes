@@ -44,6 +44,7 @@
 		"@auth/sveltekit": "^1.4.1",
 		"@neodrag/svelte": "^2.0.6",
 		"@prisma/client": "^5.16.1",
+		"@xyflow/svelte": "^0.1.8",
 		"http-status-codes": "^2.3.0",
 		"lodash": "^4.17.21",
 		"lucide-svelte": "^0.399.0",

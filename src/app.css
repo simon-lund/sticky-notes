@@ -2,17 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@layer components {
-    .btn {
-        @apply flex items-center gap-1 p-2 bg-amber-100 text-amber-900 rounded-lg shadow transition-all duration-200 ease-in-out;
-
-        &:hover {
-            @apply bg-amber-50;
-        }
-
-        &:active {
-            @apply transform scale-95;
-        }
+@layer base {
+    body {
+        @apply h-dvh w-screen min-w-96 min-h-96;
     }
 }
