@@ -17,7 +17,7 @@
     }
 </style>
 
-<div class="flex flex-col h-screen w-screen">
+<div class="flex flex-col h-full w-screen">
 	<div class="grow flex flex-col gap-6 items-center justify-center pb-48">
 		<div>
 			<span class="block text-center font-bold text-xl sm:text-4xl">
