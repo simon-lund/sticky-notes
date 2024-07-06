@@ -3,8 +3,6 @@ import { handle as authenticationHandle } from '$lib/server/auth';
 import { sequence } from '@sveltejs/kit/hooks';
 
 const authorizationHandle: Handle = async ({ event, resolve }) => {
-	console.log('path', event.url.pathname);
-
 	// Allow /signin to be accessed by anyone
 	// If we don't do this, we'll end up in an infinite redirect loop
 	if (event.url.pathname === '/signin') {
