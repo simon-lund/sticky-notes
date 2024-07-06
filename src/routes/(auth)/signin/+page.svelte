@@ -20,12 +20,12 @@
 <div class="flex flex-col h-screen w-screen">
 	<div class="grow flex flex-col gap-6 items-center justify-center pb-48">
 		<div>
-			<span class="block text-center font-bold text-4xl">
+			<span class="block text-center font-bold text-xl sm:text-4xl">
 				Welcome to
 			</span>
-			<h1 class="text-center font-bold text-6xl">Sticky Notes</h1>
+			<h1 class="text-center font-bold text-4xl sm:text-6xl">Sticky Notes</h1>
 		</div>
-		<div class="flex gap-4">
+		<div class="flex flex-col sm:flex-row gap-4">
 			<button class="btn-login" on:click={() => signIn('github', {callbackUrl: '/'})}>
 				<img src="/github-mark.svg" alt="GitHub Logo" class="w-6 h-6" />
 				Login with GitHub
