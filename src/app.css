@@ -4,6 +4,6 @@
 
 @layer base {
     body {
-        @apply h-dvh w-screen min-w-96 min-h-96;
+        @apply h-dvh min-h-96 w-screen min-w-96;
     }
 }

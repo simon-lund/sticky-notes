@@ -7,14 +7,13 @@
 <script lang="ts">
 	// TODO: needs typing
 	import { useSvelteFlow } from '@xyflow/svelte';
-	import { GripHorizontalIcon, MaximizeIcon, MinimizeIcon, XIcon } from 'lucide-svelte';
-	import { onMount, tick } from 'svelte';
 	import debounce from 'lodash/debounce';
+	import { onMount, tick } from 'svelte';
+	import { GripHorizontalIcon, MaximizeIcon, MinimizeIcon, XIcon } from 'lucide-svelte';
 	import type { EventElements } from '$lib/types';
 	import ColorPicker from '$lib/components/color-picker.svelte';
 
 	const { deleteElements } = useSvelteFlow();
-
 
 	// Props
 	export let data;
@@ -52,7 +51,6 @@
 		// Update foreground store
 		$foreground = { id, zIndex };
 
-		// Update database
 		await fetch(`/api/notes/${id}`, {
 			method: 'PATCH',
 			headers: {
@@ -88,7 +86,7 @@
 
 	async function deleteSelf() {
 		// Remove the note from SvelteFlow
-		await deleteElements({nodes: [{id}]})
+		await deleteElements({ nodes: [{ id }] });
 
 		await fetch(`/api/notes/${id}`, {
 			method: 'DELETE'
@@ -130,10 +128,11 @@
         @apply bg-transparent;
     }
 </style>
-<div role="button" tabindex="0" class="note"  style:background-color={color} on:mousedown={raise}>
+
+<div role="button" tabindex="0" class="note" style:background-color={color} on:mousedown={raise}>
 	<div class="actionbar">
 		<div>
-				<ColorPicker on:select={colorize} />
+			<ColorPicker on:select={colorize} />
 		</div>
 		<div>
 			<button title="Drag & Drop" class="drag-handle active:cursor-move cursor-grab">
@@ -149,13 +148,12 @@
 						<MinimizeIcon size="16" />
 					{/if}
 				</button>
-					<button title="Delete" on:click={deleteSelf}>
-						<XIcon size="19" />
-					</button>
+				<button title="Delete" on:click={deleteSelf}>
+					<XIcon size="19" />
+				</button>
 			</div>
 		</div>
 	</div>
-
 	<!-- Content -->
 	{#if isMinimized}
 		<button title="Maximize" class="text-left truncate w-full" on:click={async () => {

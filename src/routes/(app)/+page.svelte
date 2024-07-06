@@ -20,14 +20,12 @@
 	let innerWidth = 0;
 	let innerHeight = 0;
 
-
 	// Functions
 	async function nodedrag(event: CustomEvent<{ event: MouseEvent; targetNode: Node }>) {
 		const node = event.detail.targetNode;
 		const id = node.id;
 		const { x, y } = node.position;
 
-		// Update note position
 		await fetch(`/api/notes/${id}`, {
 			method: 'PATCH',
 			headers: {
@@ -44,9 +42,8 @@
 			y: Math.random() * (innerHeight / 2),
 			color: COLORS[Math.floor(Math.random() * COLORS.length)],
 			isMinimized: false
-		}
+		};
 
-		// Create a new note
 		const note = await fetch('/api/notes', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -62,6 +59,7 @@
     main {
         height: 100vh;
     }
+
     .panel {
         @apply flex gap-4;
     }
@@ -77,10 +75,10 @@
 	<SvelteFlow nodeTypes={{note: Note}} {nodes} {edges} on:nodedrag={debounce(nodedrag, 500)}>
 		<Panel position="top-right" class="panel">
 			<div class="panel">
-					<button on:click={addNote}>
-						<PlusIcon size="20" />
-						Add note
-					</button>
+				<button on:click={addNote}>
+					<PlusIcon size="20" />
+					Add note
+				</button>
 				<button on:click={() => signOut()}>
 					<LogOutIcon size="18" />
 					Sign out

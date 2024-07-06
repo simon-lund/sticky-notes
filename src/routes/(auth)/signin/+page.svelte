@@ -1,8 +1,8 @@
 <script>
-	import { signIn } from '@auth/sveltekit/client';
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { toast } from 'svelte-sonner';
-	import { onMount } from 'svelte';
+	import { signIn } from '@auth/sveltekit/client';
 
 	onMount(() => {
 		if ($page.url.searchParams.get('error') === 'OAuthAccountNotLinked') {

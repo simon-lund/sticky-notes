@@ -1,7 +1,7 @@
-import { json, type RequestHandler } from '@sveltejs/kit';
-import { getSession } from '$lib/utils';
-import { prisma } from '$lib/server/database';
 import { StatusCodes } from 'http-status-codes';
+import { json, type RequestHandler } from '@sveltejs/kit';
+import { prisma } from '$lib/server/database';
+import { getSession } from '$lib/utils';
 
 export const PATCH: RequestHandler = async (event) => {
 	const session = await getSession(event);
@@ -28,11 +28,9 @@ export const PATCH: RequestHandler = async (event) => {
 export const DELETE: RequestHandler = async (event) => {
 	const session = await getSession(event);
 
-	const noteId = event.params.id;
-
 	await prisma.note.delete({
 		where: {
-			id: noteId,
+			id: event.params.id,
 			userId: session.user.id // Ensure the note belongs to the user
 		}
 	});

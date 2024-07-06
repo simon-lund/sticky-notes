@@ -1,7 +1,7 @@
 import { error, type RequestEvent } from '@sveltejs/kit';
 import { StatusCodes } from 'http-status-codes';
-import { type TNote } from '$lib/types';
 import {type Node} from '@xyflow/svelte';
+import { type TNote } from '$lib/types';
 
 
 /**

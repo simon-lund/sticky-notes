@@ -1,6 +1,6 @@
 import { redirect, type Handle } from '@sveltejs/kit';
-import { handle as authenticationHandle } from '$lib/server/auth';
 import { sequence } from '@sveltejs/kit/hooks';
+import { handle as authenticationHandle } from '$lib/server/auth';
 
 const authorizationHandle: Handle = async ({ event, resolve }) => {
 	// Allow /signin to be accessed by anyone

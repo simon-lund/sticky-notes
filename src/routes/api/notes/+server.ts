@@ -1,6 +1,6 @@
 import { json, type RequestHandler } from '@sveltejs/kit';
-import { getSession } from '$lib/utils';
 import { prisma } from '$lib/server/database';
+import { getSession } from '$lib/utils';
 
 export const GET: RequestHandler = async (event) => {
 	const session = await getSession(event);

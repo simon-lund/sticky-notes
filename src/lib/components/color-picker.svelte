@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { PaintbrushIcon } from 'lucide-svelte';
-	import {clickOutside} from '$lib/actions/click-outside.js';
-
+	import { clickOutside } from '$lib/actions/click-outside.js';
 	import { COLORS } from '$lib/constants';
 
 	const dispatch = createEventDispatcher();
