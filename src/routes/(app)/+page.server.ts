@@ -24,4 +24,12 @@ export const actions = {
 			body: JSON.stringify(data)
 		});
 	},
+	async delete({fetch, request}) {
+			const data = await request.formData();
+			const noteId = data.get('id');
+
+			await fetch(`/api/notes/${noteId}`, {
+				method: 'DELETE'
+			});
+	}
 };
