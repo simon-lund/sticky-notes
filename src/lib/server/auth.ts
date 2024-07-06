@@ -1,6 +1,7 @@
 import { type DefaultSession, SvelteKitAuth } from '@auth/sveltekit';
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import GitHub from "@auth/sveltekit/providers/github"
+import Discord from "@auth/sveltekit/providers/discord"
 import { prisma } from '$lib/server/database';
 
 
@@ -22,7 +23,7 @@ declare module "@auth/sveltekit" {
 export const { handle, signIn, signOut } = SvelteKitAuth({
 	adapter: PrismaAdapter(prisma),
 	trustHost: true,
-	providers: [GitHub],
+	providers: [GitHub, Discord],
 	callbacks: {
 		session({ session }) {
 			// Return the session object from the database as-is

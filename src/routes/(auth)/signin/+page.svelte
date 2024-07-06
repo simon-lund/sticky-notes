@@ -1,5 +1,4 @@
 <script>
-	import { GithubIcon } from 'lucide-svelte';
 	import { signIn } from '@auth/sveltekit/client';
 </script>
 
@@ -17,10 +16,16 @@
 			</span>
 			<h1 class="text-center font-bold text-6xl">Sticky Notes</h1>
 		</div>
-		<button class="btn-login" on:click={() => signIn('github', {callbackUrl: '/'})}>
-			<GithubIcon size="30" />
-			Login with GitHub
-		</button>
+		<div class="flex gap-4">
+			<button class="btn-login" on:click={() => signIn('github', {callbackUrl: '/'})}>
+				<img src="/github-mark.svg" alt="GitHub Logo" class="w-6 h-6" />
+				Login with GitHub
+			</button>
+			<button class="btn-login" on:click={() => signIn('discord', {callbackUrl: '/'})}>
+				<img src="/discord-mark.svg" alt="Discord Logo" class="w-6 h-6" />
+				Login with Discord
+			</button>
+		</div>
 	</div>
 	<footer class="flex bg-amber-200 p-4 items-center justify-center">
 		<p class="text-sm">
