@@ -85,7 +85,9 @@
 <svelte:window bind:innerWidth bind:innerHeight />
 
 <main>
-	<SvelteFlow nodeTypes={{note: Note}} {nodes} {edges} on:nodedrag={debounce(nodedrag, 500)}>
+	<SvelteFlow nodeTypes={{note: Note}} {nodes} {edges} on:nodedrag={debounce(nodedrag, 500)}
+							proOptions={{hideAttribution: true}}
+	>
 		<Panel position="top-right" class="panel">
 			<div class="panel">
 				<button on:click={addNote}>
