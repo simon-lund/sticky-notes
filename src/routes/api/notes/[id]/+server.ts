@@ -2,7 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import { error, json, type RequestHandler } from '@sveltejs/kit';
 import { prisma } from '$lib/server/database';
 import { getSession } from '$lib/utils';
-import { Note } from '$lib/types';
+import { Note, type TNote } from '$lib/types';
 import _ from 'lodash';
 
 const isDefined = _.negate(_.isUndefined);
@@ -13,7 +13,7 @@ export const PATCH: RequestHandler = async (event) => {
 	const data = await event.request.json();
 
 	// Get all valid fields to prevent malicious data
-	let note = {
+	let note: Partial<TNote> = {
 		content: data?.content,
 		x: data?.x,
 		y: data?.y,
@@ -28,7 +28,7 @@ export const PATCH: RequestHandler = async (event) => {
 	// Validate remaining fields
 	try {
 		for (const [key, value] of Object.entries(note)) {
-			await Note.validateAt(key, value);
+			await Note.validateAt(key, { [key]: value });
 		}
 	} catch {
 		return error(StatusCodes.BAD_REQUEST, { message: 'Invalid data' });
@@ -42,7 +42,7 @@ export const PATCH: RequestHandler = async (event) => {
 			id: event.params.id,
 			userId: session.user.id // Ensure the note belongs to the user
 		},
-		note
+		data: note
 	});
 
 	return json(note);
