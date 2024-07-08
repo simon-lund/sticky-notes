@@ -2,7 +2,7 @@ import { type InferType, object, string, number, boolean } from 'yup';
 import { COLORS } from '$lib/constants';
 
 export const Note = object({
-	id: string().required(),
+	id: string(),
 	content: string().nonNullable(),
 	x: number().required(),
 	y: number().required(),
