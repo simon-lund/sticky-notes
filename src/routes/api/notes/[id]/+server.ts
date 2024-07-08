@@ -13,14 +13,14 @@ export const PATCH: RequestHandler = async (event) => {
 	const data = await event.request.json();
 
 	// Get all valid fields to prevent malicious data
-	let note = Note.cast({
+	let note = {
 		content: data?.content,
 		x: data?.x,
 		y: data?.y,
 		zIndex: data?.zIndex,
 		color: data?.color,
 		isMinimized: data?.isMinimized
-	});
+	};
 
 	// Remove undefined values
 	note = _.pickBy(note, isDefined);
